@@ -17,18 +17,14 @@
             <h1>Lista de tareas</h1>
         </div>
         <div class="section_list">
-            <div class="section_list-card">
-                <div class="list-card-added">SACAR AL PERRO A PASEAR</div>
-                <div class="list-card-icons">
-                    <button><i class="fa-solid fa-check" id="check"></i></button>
-                    <button><i class="fa-solid fa-xmark" id="delete"></i></button>
-                </div>
-            </div>
+            <ul id="section_list-task" class="section_list-cards">
+            </ul>
             <div class="section_list-addTask">
                 <input type="text" name="task" id="input-id" placeholder="Escriba su tarea" class="list-addTask-input">
-                <button class="list-addTask-button">Agregar tarea</button>
+                <button class="list-addTask-button" id="btnAddTask" onclick="agregarTarea()"><b>Agregar tarea</b></button>
             </div>
         </div>
     </main>
+    <script src="./js/index.js"></script>
 </body>
 </html>
