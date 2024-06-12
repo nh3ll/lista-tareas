@@ -1,39 +1,15 @@
+const input = document.getElementById("input-id")
+let nuevoListItem = document.createElement('li');                     /* VARIABLE GLOBAL IMPORTANTE YA QUE SE USA EN CASI TODAS LAS FUNCIONES */
 
-
-agregarTarea = () =>{
-
-    /* OBTENGO EL VALOR DEL CAMPO */
-    let nuevaTareaTexto = document.getElementById("input-id").value;
-
-    /* VERIFICO QUE EL CAMPO NO ESTE VACIO */
-    if (nuevaTareaTexto === "") {
-        alert("Ingrese una tarea");
-        return;
-    }
-
-    /* CREAR ELEMENTO EN LISTA */
-    let nuevoListItem = document.createElement('li');
-    nuevoListItem.classList.add("item_list-card");
-
-    nuevoListItem.innerHTML = `
-    <div class="list_card-content">
-        <div class="list-card-added">${nuevaTareaTexto}</div>
-    </div>
-
-    `;
-
-
-    /* CREAR DIV DONDE ESTEN LOS ICONOS DE BORRAR Y CHEQUEAR */
-    let divIcons = document.createElement("div");
-    divIcons.classList.add("list-card-icons");
-
-    /* BOTON ELIMINAR */
+const funcionEliminar = () =>{                                                          /* BOTON CON EL EVENTO DE REMOVER EL nuevoListItem, SE RETORNA  */
     let botonBorrar = document.createElement("button");
     botonBorrar.innerHTML = `<i class="fa-solid fa-xmark" id="delete-id"></i>`;
     botonBorrar.classList.add("delete");
     botonBorrar.onclick = function() {nuevoListItem.remove()} ;
+    return botonBorrar;
+    }
 
-    /* BOTON CHEQUEAR */
+    const funcionCheck = ()=>{                                                           /* BOTON CON EL EVENTO DE CAMBIAR LA CLASE DE nuevoListItem, SE RETORNA  */
     let botonChequear = document.createElement("button");
     botonChequear.innerHTML = `<i class="fa-solid fa-check" id="check-id"></i>`;
     botonChequear.classList.add("check");
@@ -41,16 +17,37 @@ agregarTarea = () =>{
         let textoDeLista = nuevoListItem;
         textoDeLista.classList.toggle('complete');
     }) 
+    return botonChequear;
+    }
 
-    /* AGREGAR BOTON AL DIV Y AGREGAR DIV AL ELEMENTO */
-    divIcons.appendChild(botonBorrar);
+const iconsCreate =(nuevoListItem)=>{                            /* CREA UN DIV CON VARIABLES DE LOS RETORNOS PASADOS, ESTAS SE AÑADEN COMO HIJOS Y ESTE SE AGREGA AL nuevoListItem  */
+    let divIcons = document.createElement("div");
+    divIcons.classList.add("list-card-icons");
+    const botonEliminar = funcionEliminar(); 
+    const botonChequear = funcionCheck(); 
+    divIcons.appendChild(botonEliminar);
     divIcons.appendChild(botonChequear);
     nuevoListItem.appendChild(divIcons)
+    }  
 
-    /* AGREGAR ELEMENTO NUEVO A LA LISTA DE TAREAS */
+    const agregarTarea = () =>{                           /*VE VALOR DEL INPUT, CREA HTML DE nuevoListItem Y PONE EN SECCION , SI ES DISTINTO DE VACIO, HACE LA FUNCION iconsCreate */     
+    let nuevaTareaTexto = document.getElementById("input-id").value;
+    if (nuevaTareaTexto === "") {
+        alert("Ingrese una tarea");
+        return;
+    }
+    let nuevoListItem = document.createElement('li');  
+    nuevoListItem.classList.add("item_list-card");
+    nuevoListItem.innerHTML = 
+    `
+    <div class="list_card-content">
+        <div class="list-card-added">${nuevaTareaTexto}</div>
+    </div>
+    `;
     document.getElementById("section_list-task").appendChild(nuevoListItem);
-
-}
-
-
-
+    if (nuevoListItem != "") {
+        iconsCreate(nuevoListItem)
+        input.value = ""
+    }
+    
+    }
