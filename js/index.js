@@ -36,7 +36,6 @@ const iconsCreate =(nuevoListItem)=>{                            /* CREA UN DIV 
         alert("Ingrese una tarea");
         return;
     }
-    let nuevoListItem = document.createElement('li');  
     nuevoListItem.classList.add("item_list-card");
     nuevoListItem.innerHTML = 
     `
@@ -44,10 +43,7 @@ const iconsCreate =(nuevoListItem)=>{                            /* CREA UN DIV 
         <div class="list-card-added">${nuevaTareaTexto}</div>
     </div>
     `;
+    iconsCreate(nuevoListItem);
     document.getElementById("section_list-task").appendChild(nuevoListItem);
-    if (nuevoListItem != "") {
-        iconsCreate(nuevoListItem);
-        input.value = "";
-    }
-    
+    input.value = "";
     }

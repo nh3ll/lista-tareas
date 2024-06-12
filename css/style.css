@@ -100,7 +100,7 @@ ul, li{
 /* CUANDO SE LE AGREGUE LA CLASE COMPLETE AL ITEM-LIST-CARD EL LIST-CARD-ADDED SE LE APLICA EL ESTILO */
 .item_list-card.complete  .list-card-added{
     text-decoration: line-through;
-    color: rgba(0, 0, 0, 0.322);
+    color: rgba(0, 0, 0, 0.384);
 }
 
 .list-card-icons button:hover{
