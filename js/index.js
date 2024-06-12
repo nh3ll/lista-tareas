@@ -1,4 +1,4 @@
-const input = document.getElementById("input-id")
+const input = document.getElementById("input-id");
 let nuevoListItem = document.createElement('li');                     /* VARIABLE GLOBAL IMPORTANTE YA QUE SE USA EN CASI TODAS LAS FUNCIONES */
 
 const funcionEliminar = () =>{                                                          /* BOTON CON EL EVENTO DE REMOVER EL nuevoListItem, SE RETORNA  */
@@ -27,7 +27,7 @@ const iconsCreate =(nuevoListItem)=>{                            /* CREA UN DIV 
     const botonChequear = funcionCheck(); 
     divIcons.appendChild(botonEliminar);
     divIcons.appendChild(botonChequear);
-    nuevoListItem.appendChild(divIcons)
+    nuevoListItem.appendChild(divIcons);
     }  
 
     const agregarTarea = () =>{                           /*VE VALOR DEL INPUT, CREA HTML DE nuevoListItem Y PONE EN SECCION , SI ES DISTINTO DE VACIO, HACE LA FUNCION iconsCreate */     
@@ -46,8 +46,8 @@ const iconsCreate =(nuevoListItem)=>{                            /* CREA UN DIV 
     `;
     document.getElementById("section_list-task").appendChild(nuevoListItem);
     if (nuevoListItem != "") {
-        iconsCreate(nuevoListItem)
-        input.value = ""
+        iconsCreate(nuevoListItem);
+        input.value = "";
     }
     
     }
